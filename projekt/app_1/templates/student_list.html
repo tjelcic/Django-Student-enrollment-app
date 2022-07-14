@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h2>Popis studenata na predmetu {{ predmet }}</h2>
+
+<table class="pregled">
+    <tr>
+        <th>Ime i prezime</th>
+        <th>Status na predmetu</th>
+        <th>Promijeni status</th>
+    </tr>
+    <form method="POST">
+    {% for id, user in studenti.items %}
+        <tr>
+            {% for ime, status in user.items %}
+            <td> {{ime}} </td>
+
+            <td> {{ status }}</td>
+            <td>
+                {% if status == 'upisan' %}
+                <button>
+                    <a href="{%url 'ispis_predmeta' predmet_id=course_id student_id=id %}">ISPIŠI</a>
+                </button>
+                <button>
+                    <a href="{%url 'polozio_predmet' predmet_id=course_id student_id=id %}" >POLOŽEN</a>
+                </button>
+                <button>
+                    <a href ="{%url 'izgubio_potpis' predmet_id=course_id student_id=id %}" >IZGUBIO POTPIS</a>
+                </button>
+                {% endif %}
+                {% if status != 'upisan' %}
+                Ne može se promijeniti status
+                {% endif %}
+            </td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </form>
+</table>
+
+{% endblock %}

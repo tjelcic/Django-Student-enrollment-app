@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Studomat</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}"/> 
+    </head>
+    <body>
+        <div class="navigacija">
+            <ul>
+                {% if not request.user.is_authenticated %}
+                <li><a href="/login"> Login </a></li>
+                <li><a href="/register"> Register </a></li>
+                {% endif %}
+                <li> <a href="/logout"> Logout </a> </li>
+                {% if request.user.role == 'ADMIN' %}
+                    <li> <a href="/courses">Predmeti</a> </li>
+                    <li> <a href="/all_students">Studenti</a> </li>
+                    <li> <a href="/profesori">Profesori</a> </li>
+                {% endif %}
+                {% if request.user.role == 'PROFESOR' %}
+                    <li> <a href="{% url 'my_courses' request.user.id %}">Moji predmeti</a> </li>
+                {% endif %}
+
+            </ul>
+        </div>
+        <div>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="parent">
+
+    <div class="left">
+        <h3>PREDMETI</h3>
+        {% for id, predmet in neupisani.items %}
+                {{predmet}}<br>
+                <button>
+                    <a href="{%url 'upis_predmeta' predmet_id=id student_id=ime.id %}">UPIŠI</a>
+                </button><br><br>
+        {% endfor %}
+    
+    </div>
+    <div class="right">
+        <h3> UPISI - {{ime.username}} </h3>
+        {% if ime.status == 'REDOVNI' %}
+            {% with ''|center:6 as range %}
+                {% for _ in range %}
+                    <p style="font-size:18px;">SEMESTAR {{forloop.counter}}:</p>
+                    {% for predmet in upisani %}
+                        {% if predmet.predmet_id.sem_red == forloop.parentloop.counter  %}
+                            {{predmet.predmet_id}}<br><br>
+                            {% if predmet.status == 'upisan' %}
+                            <button>
+                                <a href="{%url 'ispis_predmeta' predmet_id=predmet.predmet_id_id student_id=ime.id %}">ISPIŠI</a>
+                            </button>
+                            {% if predmet.status == 'upisan' and request.user.role != 'STUDENT' %}
+                            <button>
+                                <a href="{%url 'polozio_predmet' predmet_id=predmet.predmet_id_id student_id=ime.id %}" >POLOŽEN</a>
+                            </button>
+                            <button>
+                                <a href ="{%url 'izgubio_potpis' predmet_id=predmet.predmet_id_id student_id=ime.id %}" >IZGUBIO POTPIS</a>
+                            </button>
+                            {% endif %}<br><br>
+                            {% endif %}
+                        {% endif %} 
+                    {% endfor %}
+                {% endfor %}
+            {% endwith %}
+
+        {% else %}
+            {% with ''|center:8 as range %}
+                {% for _ in range %}
+                <p style="font-size:18px;">SEMESTAR {{forloop.counter}}:</p>
+                    {% for predmet in upisani %}
+                        {% if predmet.predmet_id.sem_izv == forloop.parentloop.counter %}
+                            {{predmet.predmet_id}}<br><br>
+                            {% if predmet.status == 'upisan' %}
+                            <button>
+                                <a href="{%url 'ispis_predmeta' predmet_id=predmet.predmet_id_id student_id=ime.id %}">ISPIŠI</a>
+                            </button>
+                            {% if predmet.status == 'upisan' and request.user.role != 'STUDENT' %}
+                            <button>
+                                <a href="{%url 'polozio_predmet' predmet_id=predmet.predmet_id_id student_id=ime.id %}" >POLOŽEN</a>
+                            </button>
+                            <button>
+                                <a href ="{%url 'izgubio_potpis' predmet_id=predmet.predmet_id_id student_id=ime.id %}" >IZGUBIO POTPIS</a>
+                            </button>
+                            {% endif %}<br><br>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            {% endwith %}
+    {% endif %}
+
+    </div>
+
+{% endblock %}

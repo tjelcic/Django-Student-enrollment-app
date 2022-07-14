@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<p> {{student}} polozio/la je {{zbroj}} bodova.</p>
+
+<form method="POST">
+    <table class="pregled">
+        <tr>
+            <th>Name</th>
+            <th>Ects</th>
+   
+        </tr>
+        
+            {% for course in predmeti %}
+                <tr>
+                    <td> {{course.predmet_id__name}} </td>
+                    <td> {{course.predmet_id__ects}} </td>
+                </tr>
+            {% endfor %}
+    </table>
+</form>
+
+{% endblock %}

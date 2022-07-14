@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h2>POPIS PREDMETA</h2>
+
+<h4><a href="/insert_course"> DODAJ PREDMET </a><br><br></h4>
+
+<form method="POST">
+    <table class="pregled">
+        <tr>
+            <th>Name</th>
+            <th>Code</th>
+            <th>Edit</th>
+            <th>Details</th>
+            <th>Delete</th>
+            <th>Students</th>
+        </tr>
+        
+            {% for course in predmeti %}
+                <tr>
+                    <td> {{course.name}} </td>
+                    <td> {{course.kod}} </td>
+                    <td> <a href="{% url 'edit_course' course.id %}"> Edit </a> </td>
+                    <td> <a href="{% url 'detail_course' course.id %}"> Details </a></td>
+                    <td> <a href="{% url 'delete_course' course.id %}"> Delete </a> </td>
+                    <td> <a href="{% url 'student_list' course.id %}"> Students </a></td>
+                </tr>
+            {% endfor %}
+    </table>
+</form>
+
+{% endblock %}

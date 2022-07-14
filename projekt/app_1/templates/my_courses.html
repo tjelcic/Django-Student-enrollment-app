@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h2>MOJI PREDMETI</h2>
+
+<form method="POST">
+    <table class="pregled">
+        <tr>
+            <th>Name</th>
+            <th>Code</th>
+            <th>View</th>
+            <th>Students</th>
+        </tr>
+        
+            {% for course in predmeti %}
+                <tr>
+                    <td> {{course.name}} </td>
+                    <td> {{course.kod}} </td>
+                    <td> <a href="{% url 'detail_course' course.id %}"> Details </a></td>
+                    <td> <a href="{% url 'student_list' course.id %}"> Student List </a></td>
+                </tr>
+            {% endfor %}
+    </table>
+</form>
+
+{% endblock %}

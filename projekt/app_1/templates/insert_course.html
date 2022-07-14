@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div>
+<h2>DODAJ PREDMET </h2>
+
+<form method="POST">
+    {{ form.as_p }}
+    {% csrf_token %}<br>
+    <input type="submit" value="DODAJ">
+</form>
+</div>
+
+
+{% endblock %}

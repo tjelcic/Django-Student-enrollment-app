@@ -1,0 +1,112 @@
+body {
+  background-color:rgb(254, 254, 254)
+}
+
+p {
+  color:rgb(4, 4, 4);
+}
+
+a, a:visited {
+  text-decoration: none;
+  color:#5ea1b4;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ded6d683;
+  }
+  
+li {
+  float: left;
+}
+  
+li a {
+  display: block;
+  padding: 10px;
+}
+
+.pregled {
+  font-family: "Montserrat", sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.pregled td, .pregled th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.pregled tr:nth-child(even){background-color: #f2f2f2;}
+
+.pregled tr:hover {background-color: #ddd;}
+
+.pregled th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #5ea1b4;
+  color: white;
+} 
+
+h6, h5, h4, h3, h2 {
+  color:#5ea1b4;
+}
+
+h1 {
+  color:#5ea1b4;
+  text-align:center;
+}
+
+.navigacija a:visited{
+  color:#5ea1b4;
+}
+
+.navigacija a:hover {
+  color: rgb(140, 195, 183);
+}
+
+.navigacija a:active {
+  color: rgb(169, 183, 165);
+}
+
+.parent
+{
+    width:100%;
+}
+
+.left
+{
+  float:left;
+  width:50%;
+  box-sizing:border-box;
+  padding:5px;
+  border:#CCC solid 1px;
+  min-height:200px;
+}
+  
+.right
+{
+  float:left;
+  width:50%;
+  box-sizing:border-box;
+  padding:5px;
+  border:#CCC solid 1px;
+  min-height:200px;
+} 
+
+input[type=submit] {
+  background-color: #5ea1b4;
+  color: rgb(255, 255, 255);
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: left;
+}
+  
+input[type=submit]:hover {
+  background-color: #b8c2c3;
+}

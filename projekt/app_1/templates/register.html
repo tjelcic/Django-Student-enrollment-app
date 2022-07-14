@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h3> REGISTRACIJA </h3>
+<div>
+    <form method="POST">
+        {% for field in form %}
+            <p>
+                {{ field.label_tag }}
+                {{ field }}<br>
+                
+                {% for error in field.errors %}
+                    <p style="color: red"> {{ error }}</p>
+                {% endfor %}
+            </p>
+        {% endfor %}
+
+    {% csrf_token %}
+    <input type="submit" value="REGISTRIRAJ SE">
+</form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block content%}
+
+<h2> AŽURIRAJ KORISNIKA </h2>
+
+<form method="POST">
+    {% csrf_token %}
+<table class="pregled">
+    <tr>
+        <th> Email </th>
+        <th> Username </th>
+        <th> Status </th>
+        <th> First Name</th>
+        <th> Last Name </th>
+    </tr>
+    <tr>
+        <td> {{form.email}} </td>
+        <td> {{form.username}} </td>
+        <td> {{form.status}} </td>
+        <td> {{form.first_name}} </td>
+        <td> {{form.last_name}} </td>
+
+    </tr>
+</table><br>
+    <input type="submit" value="AŽURIRAJ">
+</form>
+{%endblock%}

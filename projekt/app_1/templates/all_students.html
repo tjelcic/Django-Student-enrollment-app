@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h2>POPIS STUDENATA</h2>
+
+<h4><a href="/insert_user"> DODAJ STUDENTA </a><br><br></h4>
+
+
+<table class="pregled">
+    <tr>
+        <th>Username</th>
+        <th>Details</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <form method="POST">
+        {% for user in studenti %}
+        {% if user.role == 'STUDENT' %}
+            <tr>
+                <td> <a href="{% url 'upisni_list' user.id %}"> {{user}} </a></td>
+                <td> <a href="{% url 'details_user' user.id %}"> Details </a></td>
+                <td> <a href="{% url 'edit_user' user.id %}"> Edit </a> </td>
+                <td> <a href="{% url 'delete_user' user.id %}"> Delete </a></td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    </form>
+</table>
+
+
+{% endblock %}

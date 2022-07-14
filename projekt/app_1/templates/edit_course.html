@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block content%}
+
+<h2> AŽURIRAJ PREDMET </h2>
+
+<form method="POST">
+    {% csrf_token %}
+<table class="pregled">
+    <tr>
+        <th> Ime </th>
+        <th> Kod </th>
+        <th> Program </th>
+        <th> Bodovi </th>
+        <th> Semestar redovni </th>
+        <th> Semestar izvanredni </th>
+        <th> Izborni </th>
+        <th> Nositelj </th>
+    </tr>
+    <tr>
+        <td> {{form.name}} </td>
+        <td> {{form.kod}} </td>
+        <td> {{form.program}} </td>
+        <td> {{form.ects}} </td>
+        <td> {{form.sem_red}} </td>
+        <td> {{form.sem_izv}} </td>
+        <td> {{form.izborni}} </td>
+        <td> {{form.nositelj}} </td>
+
+    </tr>
+</table><br>
+    <input type="submit" value="AŽURIRAJ">
+</form>
+{%endblock%}

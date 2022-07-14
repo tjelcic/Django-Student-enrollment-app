@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h2> DETALJI PREDMETA </h2>
+
+<table class="pregled">
+    <tr>
+        <th>Ime</th>
+        <th>Kod</th>
+        <th>Program</th>
+        <th>Bodovi</th>
+        <th>Semestar redovni</th>
+        <th>Semestar izvanredni</th>
+        <th>Izborni</th>
+    </tr>
+    
+        {% for c in course %}
+            <tr>
+                <td> {{c.name}} </td>
+                <td> {{c.kod}} </td>
+                <td> {{c.program}} </td>
+                <td> {{c.bodovi}} </td>
+                <td> {{c.sem_red}} </td>
+                <td> {{c.sem_izv}} </td>
+                <td> {{c.izborni}} </td>
+            </tr>
+        {% endfor %}
+</table>
+{% endblock %}

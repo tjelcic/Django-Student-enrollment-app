@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h1> HOME </h1>
+
+{% if request.user.role == 'STUDENT' %}
+    <button>
+        <a href="{% url 'upisni_list' request.user.id %}"> UPISNI LIST </a><br>
+    </button>
+    <button>
+        <a href="{% url 'zbroj_upisanih_bodova' request.user.id %}"> UPISANI PREDMETI </a><br>
+    </button>
+    <button>
+        <a href="{% url 'zbroj_polozenih_bodova' request.user.id %}"> POLOZENI PREDMETI </a><br>
+    </button>
+        
+{% endif %}
+
+<h2 style="color:red;">
+    {% if messages %}
+<ul style="background-color: white;" class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+</h2>
+
+{% endblock %}
