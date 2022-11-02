@@ -11,7 +11,7 @@ class NewUserForm(UserCreationForm):
 class UserForm(ModelForm):
     class Meta:
         model = Korisnik
-        fields = ("email", "username", 'role', 'status', "first_name", "last_name")
+        fields = ("email", "username", 'status', "first_name", "last_name")
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(max_length=50, help_text='Required')
